@@ -1,5 +1,6 @@
 
 
+import 'package:fintech_app/widgets/transfer_money.dart';
 import 'package:flutter/material.dart';
 
 class ActionButtons  extends StatelessWidget{
@@ -17,21 +18,32 @@ class ActionButtons  extends StatelessWidget{
           color:const Color.fromARGB(255,239,243,245),
           borderRadius:BorderRadius.circular(15),
         ),
-        child:const Row(
+        child: Row(
           mainAxisAlignment:MainAxisAlignment.spaceEvenly,
           children:[
             ActionButton(
               icon: Icons.account_balance,
-               label: 'Deposit'),
+               label: 'Deposit',
+               onPressed:(){},
+               ),
+               
             ActionButton(
               icon: Icons.swap_horiz,
-               label: 'Transfer'),
+               label: 'Transfer',
+               onPressed:(){
+                Navigator.push(context,MaterialPageRoute(builder:(context)=>const TransferMoney()));
+               },
+               ),
             ActionButton(
               icon: Icons.attach_money,
-               label: 'Withdraw'),
+               label: 'Withdraw',
+               onPressed:(){},
+               ),
             ActionButton(
               icon: Icons.apps_sharp,
-               label: 'More'),
+               label: 'More',
+               onPressed:(){},
+               ),
           ]
         )
       )
@@ -40,16 +52,17 @@ class ActionButtons  extends StatelessWidget{
 }
 
 class ActionButton extends StatelessWidget{
-  const ActionButton({super.key,required this.icon,required this.label});
+  const ActionButton({super.key,required this.icon,required this.label,required this.onPressed});
 
   final icon;
   final String label;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context){
     return Column(
       mainAxisAlignment:MainAxisAlignment.center,
-      children:[IconButton.outlined(onPressed:(){},
+      children:[IconButton.outlined(onPressed:onPressed,
       icon:Icon(
         icon,
         color:const Color.fromARGB(255,16,80,98),

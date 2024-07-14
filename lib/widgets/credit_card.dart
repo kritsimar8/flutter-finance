@@ -9,6 +9,7 @@ class CreditCard extends StatelessWidget{
     Widget build(BuildContext context){
       return Container(
         height:220,
+        width:400,
         decoration: BoxDecoration(
          
         ),
